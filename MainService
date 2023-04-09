@@ -1,0 +1,17 @@
+local module = {}
+
+local Player = game.Players.LocalPlayer
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Player_Datas = ReplicatedStorage:WaitForChild("Player_Datas")
+
+local My_Player_Data = Player_Datas:FindFirstChild(Player.Name)
+local CurrentSlot = My_Player_Data.Current_Slot.Value
+local Slot = My_Player_Data:FindFirstChild("Slot_"..tostring(CurrentSlot))
+
+function module.checkMeditationProgress()
+  local Progress = Slot.MeditationProgression
+  return Progress.MaxExp.Value, Progress.Exp.Value, Progress.Level.Value
+end
+
+return module
