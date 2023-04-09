@@ -13,5 +13,12 @@ function module.checkMeditationProgress()
   local Progress = Slot.MeditationProgression
   return Progress.MaxExp.Value, Progress.Exp.Value, Progress.Level.Value
 end
+function module.sendNotification(msg)
+  game.StarterGui:SetCore("SendNotification", {
+      Title = "Project Mugetsu",
+      Text = msg,
+      Duration = 1.45
+  })
+end
 
 return module
